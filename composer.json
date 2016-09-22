@@ -14,8 +14,8 @@
         "ext-curl": "*"
     },
     "autoload": {
-        "psr-4": {
-            "WidePay\\": ""
+        "psr-0": {
+            "WidePay": ""
         }
     }
 }
