@@ -8,7 +8,6 @@
         "email": "claudioalmeiida@gmail.com"
         }
     ],
-    "license": "MIT",
     "require": {
         "php": ">=5.4",
         "ext-curl": "*"
