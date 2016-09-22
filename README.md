@@ -1,2 +1,2 @@
-# Biblioteca em PHP
+# Biblioteca de integração em PHP
 ...
