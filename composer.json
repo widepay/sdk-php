@@ -1,0 +1,23 @@
+{
+    "name": "widepay/php",
+    "description": "Biblioteca de integração com o Wide Pay",
+    "homepage": "https://wwww.widepay.com",
+    "authors": [
+        {
+        "name": "Claudio Almeida",
+        "email": "claudioalmeiida@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4",
+        "ext-curl": "*",
+        "lib-curl": "*",
+        "lib-openssl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "WidePay\\": ""
+        }
+    }
+}
