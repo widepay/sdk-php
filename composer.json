@@ -1,18 +1,20 @@
 {
     "name": "widepay/sdk",
     "description": "Biblioteca de integração com o Wide Pay",
-    "version": "1.0.0",
     "homepage": "https://wwww.widepay.com",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
     "authors": [
         {
         "name": "Claudio Almeida",
         "email": "claudioalmeiida@gmail.com"
         }
     ],
-    "license": "MIT",
     "require": {
         "php": ">=5.4",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-0": {
