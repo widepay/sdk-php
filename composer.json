@@ -1,6 +1,7 @@
 {
     "name": "widepay/sdk",
     "description": "Biblioteca de integração com o Wide Pay",
+    "version": "1.0.0",
     "homepage": "https://wwww.widepay.com",
     "authors": [
         {
