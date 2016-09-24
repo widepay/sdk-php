@@ -7,7 +7,7 @@ Para instalar a biblioteca PHP, basta baixá-la <a href="https://github.com/wide
 
 `composer require widepay/sdk-php`
 
-Inclusão via arquivo composer.json
+##### Inclusão via arquivo composer.json
 
 ```json
 {
