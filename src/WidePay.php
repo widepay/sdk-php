@@ -18,9 +18,8 @@ class WidePay {
 	public function api($local, $parametros = array()) {
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'https://widepay.com/api/' . trim($local, '/'));
+		curl_setopt($curl, CURLOPT_URL, 'https://api.widepay.com/' . trim($local, '/'));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_HTTPHEADER, array('Accept: application/json')); 
 		curl_setopt($curl, CURLOPT_USERPWD, $this->autenticacao['carteira'] . ':' . $this->autenticacao['token']);
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parametros));
@@ -33,11 +32,9 @@ class WidePay {
 
 		if ($exec) {
 
-			if (is_array($exec = json_decode($exec, true))) {
+			$requisicao = json_decode($exec, true);
 
-				$requisicao = $exec;
-
-			} else {
+			if (!is_array($requisicao)) {
 
 				$requisicao = array(
 					'success' => false,
