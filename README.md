@@ -12,7 +12,7 @@ Para instalar a biblioteca PHP, basta baixá-la <a href="https://github.com/wide
 ```json
 {
     "require": {
-       "widepay/sdk-php": "@stable"
+       "widepay/sdk-php"
     }
 }
 ```
