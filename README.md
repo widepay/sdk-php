@@ -16,3 +16,5 @@ Para instalar a biblioteca PHP, basta baixá-la <a href="https://github.com/wide
     }
 }
 ```
+
+Para visualizar a documentação, acesse <a href="https://widepay.github.io/api">widepay.github.io/api</a>
