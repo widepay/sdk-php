@@ -37,8 +37,8 @@ class WidePay {
 			if (!is_array($requisicao)) {
 
 				$requisicao = array(
-					'success' => false,
-					'error' => 'Não foi possível tratar o retorno.'
+					'sucesso' => false,
+					'erro' => 'Não foi possível tratar o retorno.'
 				);
 
 			}
@@ -46,8 +46,8 @@ class WidePay {
 		} else {
 
 			$requisicao = array(
-				'success' => false,
-				'error' => 'Sem comunicação com o servidor.'
+				'sucesso' => false,
+				'erro' => 'Sem comunicação com o servidor.'
 			);
 
 		}
