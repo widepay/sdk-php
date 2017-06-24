@@ -14,7 +14,7 @@ Inclusão via arquivo composer.json
 ```json
 {
     "require": {
-       "widepay/sdk-php"
+       "widepay/sdk-php": "*"
     }
 }
 ```
