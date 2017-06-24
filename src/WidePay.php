@@ -18,7 +18,7 @@ class WidePay {
 	public function api($local, $parametros = array()) {
 
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'https://api.widepay.com/' . trim($local, '/'));
+		curl_setopt($curl, CURLOPT_URL, 'https://api.widepay.com/v1/' . trim($local, '/'));
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_USERPWD, $this->autenticacao['carteira'] . ':' . $this->autenticacao['token']);
 		curl_setopt($curl, CURLOPT_POST, true);
