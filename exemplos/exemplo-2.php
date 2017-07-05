@@ -32,7 +32,6 @@ $adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
             'valor' => 10.50
         )
     ),
-    'desconto' => 5,
     'referencia' => 'Fatura 12345',
     'notificacao' => 'http://www.minhaaplicacao.com/script-notificacao.php',
     'redirecionamento' => 'http://www.minhaaplicacao.com/script-redirecionamento.php',
