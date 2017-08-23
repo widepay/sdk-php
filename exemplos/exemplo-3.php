@@ -13,7 +13,7 @@ $boleto = $wp->api('recebimentos/cobrancas/boleto', array(
 
 if ($boleto->sucesso) {
 
-    print_r($boleto->parametros); // Imprime os parametros de configuração do boleto
+    print_r($boleto->parametros); // Imprime os parâmetros de configuração do boleto
 
     echo $boleto->codigo; // Código de barras do boleto
     echo $boleto->html; // HTML do boleto
