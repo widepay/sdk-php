@@ -4,19 +4,22 @@ require_once('../src/WidePay.php'); // Caminho para o SDK
 
 $wp = new WidePay('148446', '800440511285a9b0808ea85a94f3dd62'); // ID e token da carteira
 
-$consultar = $wp->api('recebimentos/cobrancas/consultar', array(
-    'id' => '264C51BE984C7718'
+$boleto = $wp->api('recebimentos/cobrancas/boleto', array(
+    'id' => '8AF962B49E3920BB',
+    'atualizar' => 'Sim',
+    'html' => 'Sim',
+    'carne' => 'Não'
 ));
 
-if ($consultar->sucesso) {
+if ($boleto->sucesso) {
 
-    echo $consultar->cobrancas[0]['id']; // ID da cobrança
-    echo $consultar->cobrancas[0]['status']; // Status da cobrança
+    print_r($boleto->parametros); // Imprime os parametros de configuração do boleto
 
-    print_r($consultar->cobrancas[0]); // Imprime todos os dados da cobrança
+    echo $boleto->codigo; // Código de barras do boleto
+    echo $boleto->html; // HTML do boleto
 
 } else {
 
-    echo $consultar->erro; // Erro
+    echo $boleto->erro; // Erro
 
 }
