@@ -2,7 +2,7 @@
     "name": "widepay/sdk-php",
     "description": "Biblioteca de integração com o Wide Pay",
     "homepage": "https://wwww.widepay.com",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "library",
     "license": "MIT",
     "authors": [
