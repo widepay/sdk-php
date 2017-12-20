@@ -23,6 +23,7 @@ class WidePay {
 		curl_setopt($curl, CURLOPT_USERPWD, $this->autenticacao['carteira'] . ':' . $this->autenticacao['token']);
 		curl_setopt($curl, CURLOPT_POST, true);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parametros));
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array('WP-API: PHP'));
 		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
