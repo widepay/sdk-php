@@ -4,8 +4,7 @@ require_once('../src/WidePay.php'); // Caminho para o SDK
 
 $wp = new WidePay('148446', '800440511285a9b0808ea85a94f3dd62'); // ID e token da carteira
 
-$adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
-    'forma' => 'Boleto,Cartão',
+$adicionar = $wp->api('recebimentos/carnes/adicionar', array(
     'cliente' => 'Lívia Pontarolo Almeida',
     'pessoa' => 'Física',
     'cpf' => '463.384.662-02',
@@ -18,8 +17,7 @@ $adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
         'bairro' => 'Vila Carvalho',
         'cep' => '79005-610',
         'cidade' => 'Campo Grande',
-        'estado' => 'MS',
-        'coletar' => 'Sim'
+        'estado' => 'MS'
     ),
     'itens' => array(
         array(
@@ -35,8 +33,9 @@ $adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
     ),
     'referencia' => 'Fatura 12345',
     'notificacao' => 'http://www.minhaaplicacao.com/script-notificacao.php',
-    'redirecionamento' => 'http://www.minhaaplicacao.com/script-redirecionamento.php',
-    'vencimento' => '2017-08-10',
+    'vencimento' => '2018-08-10',
+    'parcelas' => '6',
+    'dividir' => 'Não',
     'enviar' => 'E-mail',
     'mensagem' => 'Mensagem personalizada no e-mail',
     'marketplace' => array(
@@ -63,8 +62,10 @@ $adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
 
 if ($adicionar->sucesso) {
 
-    echo $adicionar->id; // ID da cobrança gerada
-    echo $adicionar->link; // Link da cobrança gerada
+    echo $adicionar->id; // ID do carnê gerado
+    echo $adicionar->link; // Link do carnê gerado
+
+    print_r($adicionar->cobrancas); // Imprime todos os IDS das cobranças geradas
 
 } else {
 

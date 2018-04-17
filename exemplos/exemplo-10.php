@@ -4,8 +4,7 @@ require_once('../src/WidePay.php'); // Caminho para o SDK
 
 $wp = new WidePay('148446', '800440511285a9b0808ea85a94f3dd62'); // ID e token da carteira
 
-$adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
-    'forma' => 'Cartão',
+$adicionar = $wp->api('recebimentos/carnes/adicionar', array(
     'cliente' => 'Lívia Pontarolo Almeida',
     'pessoa' => 'Física',
     'cpf' => '463.384.662-02',
@@ -14,13 +13,18 @@ $adicionar = $wp->api('recebimentos/cobrancas/adicionar', array(
             'descricao' => 'Descrição item 1',
             'valor' => 22.50
         )
-    )
+    ),
+    'vencimento' => '2018-08-10',
+    'parcelas' => '6',
+    'dividir' => 'Não'
 ));
 
 if ($adicionar->sucesso) {
 
-    echo $adicionar->id; // ID da cobrança gerada
-    echo $adicionar->link; // Link da cobrança gerada
+    echo $adicionar->id; // ID do carnê gerado
+    echo $adicionar->link; // Link do carnê gerado
+
+    print_r($adicionar->cobrancas); // Imprime todos os IDS das cobranças geradas
 
 } else {
 
