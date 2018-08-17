@@ -2,11 +2,14 @@
 
 class WidePay {
 
+	private $api;
 	private $autenticacao = array();
 
 	public $requisicoes = array();
 
-	public function __construct($carteira, $token) {
+	public function __construct($carteira, $token, $api = 'PHP') {
+
+		$this->api = $api;
 
 		$this->autenticacao = array(
 			'carteira' => $carteira,
@@ -17,39 +20,50 @@ class WidePay {
 
 	public function api($local, $parametros = array()) {
 
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, 'https://api.widepay.com/v1/' . trim($local, '/'));
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_USERPWD, $this->autenticacao['carteira'] . ':' . $this->autenticacao['token']);
-		curl_setopt($curl, CURLOPT_POST, true);
-		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parametros));
-		curl_setopt($curl, CURLOPT_HTTPHEADER, array('WP-API: PHP'));
-		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_setopt($curl, CURLOPT_SSLVERSION, 1);
-		$exec = curl_exec($curl);
-		curl_close($curl);
+		if (!$this->autenticacao['carteira'] || !$this->autenticacao['token']) {
 
-		if ($exec) {
-
-			$requisicao = json_decode($exec, true);
-
-			if (!is_array($requisicao)) {
-
-				$requisicao = array(
-					'sucesso' => false,
-					'erro' => 'Não foi possível tratar o retorno.'
-				);
-
-			}
+			$requisicao = array(
+				'success' => false,
+				'error' => 'É necessário informar a carteira e o token para efetuar a autenticação.'
+			);
 
 		} else {
 
-			$requisicao = array(
-				'sucesso' => false,
-				'erro' => 'Sem comunicação com o servidor.'
-			);
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, 'https://api.widepay.com/v1/' . trim($local, '/'));
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_USERPWD, $this->autenticacao['carteira'] . ':' . $this->autenticacao['token']);
+			curl_setopt($curl, CURLOPT_POST, true);
+			curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($parametros));
+			curl_setopt($curl, CURLOPT_HTTPHEADER, array('WP-API: ' . $this->api));
+			curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 30);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
+			curl_setopt($curl, CURLOPT_SSLVERSION, 1);
+			$exec = curl_exec($curl);
+			curl_close($curl);
+
+			if ($exec) {
+
+				$requisicao = json_decode($exec, true);
+
+				if (!is_array($requisicao)) {
+
+					$requisicao = array(
+						'sucesso' => false,
+						'erro' => 'Não foi possível tratar o retorno.'
+					);
+
+				}
+
+			} else {
+
+				$requisicao = array(
+					'sucesso' => false,
+					'erro' => 'Sem comunicação com o servidor.'
+				);
+
+			}
 
 		}
 
