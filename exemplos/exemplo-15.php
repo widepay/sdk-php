@@ -10,7 +10,7 @@ $cancelar = $wp->api('recebimentos/carnes/cancelar', array(
 
 if ($cancelar->sucesso) {
 
-    echo $cancelar->total; // Total de carnês cancelados
+    echo $cancelar->total; // Total de carnês afetados
 
 } else {
 

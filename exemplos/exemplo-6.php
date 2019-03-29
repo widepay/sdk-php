@@ -10,7 +10,7 @@ $cancelar = $wp->api('recebimentos/cobrancas/cancelar', array(
 
 if ($cancelar->sucesso) {
 
-    echo $cancelar->total; // Total de cobranças canceladas
+    echo $cancelar->total; // Total de cobranças afetadas
 
 } else {
 

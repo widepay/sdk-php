@@ -4,16 +4,16 @@ require_once('../src/WidePay.php'); // Caminho para o SDK
 
 $wp = new WidePay('148446', '800440511285a9b0808ea85a94f3dd62'); // ID e token da carteira
 
-$baixar = $wp->api('recebimentos/cobrancas/baixar', array(
+$manual = $wp->api('recebimentos/cobrancas/manual', array(
     'id' => array('8AF962B49E3920BB', '922FEDBE9835857A')
 ));
 
-if ($baixar->sucesso) {
+if ($manual->sucesso) {
 
-    echo $baixar->total; // Total de cobranças canceladas
+    echo $manual->total; // Total de cobranças afetadas
 
 } else {
 
-    echo $baixar->erro; // Erro
+    echo $manual->erro; // Erro
 
 }
