@@ -54,6 +54,10 @@ class WidePay {
 						'erro' => 'Não foi possível tratar o retorno.'
 					);
 
+					if ($exec) {
+						$requisicao['retorno'] = $exec;
+					}
+
 				}
 
 			} else {
